@@ -1,6 +1,6 @@
 import datetime
 import streamlit as st
-from utils import save_uploadedfile, show_results, remove_files
+from utils import save_uploadedfile, show_results, clean
 
 st.set_page_config(
     page_title = "CUSTOMER PROFILER | KAINOVATION TECHNOLOGIES",
@@ -20,19 +20,22 @@ with st.form("form", clear_on_submit=False):
     dob = st.date_input("Date of Birth", value=datetime.date(2000, 1, 1),
                         min_value=datetime.date(1940, 1, 1),
                         max_value=datetime.date(2022, 12, 31))
-    uploaded_file = st.file_uploader(
+    # full_name = 'MIROSHIKA ANNE PIUMANTHI FERNANDOPULLE'
+    # nic_or_dln = '927050803V'
+    # address = 'NO 30 BAMBUKULIYA KOCHCHIKADE'
+    uploaded_files = st.file_uploader(
         "Choose a file", accept_multiple_files=True)
-    if uploaded_file is not None:
-        for files in uploaded_file:
-            save_uploadedfile(files)
+    if uploaded_files is not None:
+        for file in uploaded_files:
+            save_uploadedfile(file)
     else:
         st.write('please upload documents first')
     submitted = st.form_submit_button("Submit")
-    if full_name and nic_or_dln and address and dob and uploaded_file and submitted:
+    if full_name and nic_or_dln and address and dob and uploaded_files and submitted:
         st.success("Form submited successfully")
     elif submitted:
         st.error('Please fill all the fields!')
 
-if full_name and nic_or_dln and address and dob and uploaded_file and submitted:
+if full_name and nic_or_dln and address and dob and uploaded_files and submitted:
     show_results(full_name, nic_or_dln, address, dob)    
-    remove_files()
+    clean()
