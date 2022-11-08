@@ -214,24 +214,24 @@ def check_fin_doc(name,nic_or_dln, address, dob):
     
 def show_results(full_name, nic_or_dln, address, dob):
     # global nic_saved, dl_saved, pp_saved, proposal_saved, fin_doc_saved, sign_saved, add_doc_saved
-    for i in messages:
-        st.write(str(i)+" detected. ")
+    # for i in messages:
+    #     st.write(str(i)+" detected. ")
     print(dl_saved, proposal_saved, fin_doc_saved)
     if dl_saved:
         name, idNo, add, bday = check_dl(full_name,nic_or_dln, address, dob)
         name_mark, idNo_mark, add_mark, bday_mark = results(name, idNo, add, bday)
-        dl_col = [name_mark, idNo_mark, add_mark, bday_mark]
+        dl_col = ['✅',name_mark, idNo_mark, add_mark, bday_mark]
     if proposal_saved:
         name, idNo, add, bday = check_proposal(full_name,nic_or_dln, address, dob)
         name_mark, idNo_mark, add_mark, bday_mark = results(name, idNo, add, bday)
-        proposal_col = [name_mark, idNo_mark, add_mark, bday_mark]
+        proposal_col = ['✅', name_mark, idNo_mark, add_mark, bday_mark]
     if fin_doc_saved:
         name, idNo, add, bday = check_fin_doc(full_name,nic_or_dln, address, dob)
         name_mark, idNo_mark, add_mark, bday_mark = results(name, idNo, add, bday)
-        fin_col = [name_mark, idNo_mark, add_mark, bday_mark]
+        fin_col = ['✅',name_mark, idNo_mark, add_mark, bday_mark]
     df = pd.DataFrame(
         {
-            "Verification": ['Name verification','NIC number verification', 'Address verification', 'Date of birth verification'],
+            "Verification": ['Detected Document', 'Name verification','NIC number verification', 'Address verification', 'Date of birth verification'],
             "Driving Licence": dl_col,
             "Proposal":proposal_col,
             "Personal financial needs":fin_col

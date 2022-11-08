@@ -3,7 +3,7 @@ import streamlit as st
 from utils import save_uploadedfile, show_results, clean
 
 st.set_page_config(
-    page_title = "CUSTOMER PROFILER | KAINOVATION TECHNOLOGIES",
+    page_title = "CUSTOMER PROFILER | Union Assuarance",
     # page_icon = r"static\favicon.png",
     layout = "wide",
     initial_sidebar_state = "expanded",
